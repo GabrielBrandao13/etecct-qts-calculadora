@@ -1,4 +1,4 @@
-const formulario = document.querySelector('.form')
+const form = document.querySelector('.form')
 const inputN1 = document.querySelector('input#n1')
 const inputN2 = document.querySelector('input#n2')
 const inputOperation = document.querySelector('input#operation')
@@ -48,4 +48,7 @@ function handleFormSubmit(e) {
     clearForm()
 }
 
-formulario.addEventListener('submit', handleFormSubmit)
+function main() {
+    form.addEventListener('submit', handleFormSubmit)
+}
+main()
