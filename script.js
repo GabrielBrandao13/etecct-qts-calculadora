@@ -1,8 +1,8 @@
-const formulario = document.querySelector('.formulario')
+const formulario = document.querySelector('.form')
 const inputN1 = document.querySelector('input#n1')
 const inputN2 = document.querySelector('input#n2')
-const inputOperation = document.querySelector('input#operacao')
-const resultField = document.querySelector('.resultado')
+const inputOperation = document.querySelector('input#operation')
+const resultField = document.querySelector('.result')
 
 function clearForm() {
     inputN1.value = ''

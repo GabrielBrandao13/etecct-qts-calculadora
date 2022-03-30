@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,17 @@
     <link rel="stylesheet" href="./style.css">
     <title>Calculadora</title>
 </head>
+
 <body>
-    <h1>Calculadora</h1>
-    <form class="formulario">
-        <input type="number" name="n1" id="n1" placeholder="Insira um número">
-        <input type="number" name="n2" id="n2" placeholder="Insira um número">
-        <input type="text" name="operacao" id="operacao" placeholder="Insira a operação">
+    <h1 class="title">Calculadora</h1>
+    <form class="form">
+        <input type="number" name="n1" id="n1" placeholder="Insira um número" step="any">
+        <input type="number" name="n2" id="n2" placeholder="Insira um número" step="any">
+        <input type="text" name="operation" id="operation" placeholder="Insira a operação">
         <button type="submit">Calcular</button>
     </form>
-    <p class="resultado"></p>
+    <p class="result"></p>
     <script src="script.js"></script>
 </body>
+
 </html>

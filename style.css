@@ -11,6 +11,11 @@ body {
     height: 100vh;
 }
 
+.title {
+    font-weight: bold;
+    text-decoration: underline;
+    color: rgb(19, 19, 19);
+}
 
 form{
     display:flex;
@@ -56,7 +61,7 @@ form > button[type="submit"]:hover {
     color: white;
 }
 
-.resultado {
+.result {
     color: rgb(39, 39, 39);
     font-size: 13pt;
 }
