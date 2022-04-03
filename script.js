@@ -27,13 +27,18 @@ function getDecimalsCount(n) {
     return 0
 }
 
+function precisionRound(number, precision) {
+    var factor = 10 ** precision
+    return Math.round(number * factor) / factor;
+}
+
 
 function calculate(n1, n2, operation) {
     const fOperation = operations[operation]
 
-
     if (fOperation) {
-        return fOperation(n1, n2)
+        const precision = Math.max(1, getDecimalsCount(Math.min(n1, n2)))
+        return precisionRound(fOperation(n1, n2), precision * 10)
     }
 }
 
