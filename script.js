@@ -17,7 +17,7 @@ const operations = {
     '/': (n1, n2) => n1 / n2,
 }
 
-function getNumberOfDecimals(n) {
+function getDecimalsCount(n) {
     const strN = n.toString()
     if (strN.includes('.')) {
         const floatingSlice = strN.split('.')[1]
@@ -27,12 +27,13 @@ function getNumberOfDecimals(n) {
     return 0
 }
 
+
 function calculate(n1, n2, operation) {
     const fOperation = operations[operation]
 
-    let floatingCorrection = getNumberOfDecimals(Math.min([n1, n2]))
+
     if (fOperation) {
-        return fOperation(n1 * (10 ** floatingCorrection), n2 * (10 ** floatingCorrection)) / 10 ** floatingCorrection
+        return fOperation(n1, n2)
     }
 }
 
