@@ -21,8 +21,7 @@ function getDecimalsCount(n) {
     const strN = n.toString()
     if (strN.includes('.')) {
         const floatingSlice = strN.split('.')[1]
-        const floatingSliceLen = floatingSlice.length
-        return floatingSliceLen
+        return floatingSlice.length
     }
     return 0
 }
