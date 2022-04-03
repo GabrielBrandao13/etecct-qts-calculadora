@@ -17,10 +17,23 @@ const operations = {
     '/': (n1, n2) => n1 / n2,
 }
 
+function getNumberOfDecimals(n) {
+    const strN = n.toString()
+    if (strN.includes('.')) {
+        const floatingSlice = strN.split('.')[1]
+        const floatingSliceLen = floatingSlice.length
+        return floatingSliceLen
+    }
+    return 0
+}
+
 function calculate(n1, n2, operation) {
     const fOperation = operations[operation]
+
+    let floatingCorrection = getNumberOfDecimals(Math.min([n1, n2]))
+    floatingCorrection = floatingCorrection === 0 ? 1 : floatingCorrection
     if (fOperation) {
-        return fOperation(n1, n2)
+        return fOperation(n1 * (10 ** floatingCorrection), n2 * (10 ** floatingCorrection)) / 10 ** floatingCorrection
     }
 }
 
@@ -51,4 +64,5 @@ function handleFormSubmit(e) {
 function main() {
     form.addEventListener('submit', handleFormSubmit)
 }
+
 main()
