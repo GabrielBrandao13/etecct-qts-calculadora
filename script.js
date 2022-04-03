@@ -31,7 +31,6 @@ function calculate(n1, n2, operation) {
     const fOperation = operations[operation]
 
     let floatingCorrection = getNumberOfDecimals(Math.min([n1, n2]))
-    floatingCorrection = floatingCorrection === 0 ? 1 : floatingCorrection
     if (fOperation) {
         return fOperation(n1 * (10 ** floatingCorrection), n2 * (10 ** floatingCorrection)) / 10 ** floatingCorrection
     }
