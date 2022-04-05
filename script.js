@@ -60,9 +60,9 @@ function displayResult(result) {
 function handleFormSubmit(e) {
     e.preventDefault()
     const { n1, n2, operation } = getFormData()
-    const result = calculate(n1, n2, operation)
-    displayResult(result)
     clearForm()
+    const result = calculate(n1, n2, operation)
+    displayResult(`${n1}${operation}${n2} = ${result}`)
 }
 
 function main() {
