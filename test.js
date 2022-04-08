@@ -1,8 +1,8 @@
 function test(result, expectedResult, n) {
     if (result !== expectedResult) {
-        return `❌ Teste ${n} falhou (resultado esperado: "${expectedResult})`
+        return `❌ Teste ${n} falhou (resultado esperado: "${expectedResult}"; resultado obtido: "${result}")`
     }
-    return `✔ Teste ${n} funcionou`
+    return `✔ Teste ${n} funcionou (obtido o resultado "${result}" com sucesso!)`
 }
 
 function testWithInterface(n1, n2, operation, expectedResult, n) {
