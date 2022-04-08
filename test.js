@@ -1,6 +1,6 @@
 function test(result, expectedResult, n) {
     if (result !== expectedResult) {
-        return `❌ Teste ${n} falhou (resultado esperado: "${expectedResult}")`
+        return `❌ Teste ${n} falhou (resultado esperado: "${expectedResult})`
     }
     return `✔ Teste ${n} funcionou`
 }
@@ -24,10 +24,10 @@ function testCaseFactory(n1, n2, operation, expectedResult, n) {
     return fn
 }
 
-const testCase1 = testCaseFactory(4, "a", "/", "erro", 1)
-const testCase2 = testCaseFactory(4, 0, "/", "erro", 2)
-const testCase3 = testCaseFactory(0, 2, "/", "erro", 3)
-const testCase4 = testCaseFactory(4, 8, "a", "erro", 4)
+const testCase1 = testCaseFactory(4, 6, "+", 10, 1)
+const testCase2 = testCaseFactory(2.5, 4.5, "+", 7, 2)
+const testCase3 = testCaseFactory(0, 2, "/", 0, 3)
+const testCase4 = testCaseFactory(4, 8, "a", 0, 4)
 const testCase5 = testCaseFactory(4, null, "-", 4, 5)
 const testCase6 = testCaseFactory(.1, .2, "+", .3, 6)
 const testCase7 = testCaseFactory(6, 4, "-", 2, 7)
