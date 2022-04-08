@@ -1,8 +1,14 @@
 function test(result, expectedResult, n) {
     if (result !== expectedResult) {
-        return `❌ Teste ${n} falhou (resultado esperado: "${expectedResult}"; resultado obtido: "${result}")`
+        return {
+            msg: `❌ Teste ${n} falhou (resultado esperado: "${expectedResult}"; resultado obtido: "${result}")`,
+            sucess: false
+        }
     }
-    return `✔ Teste ${n} funcionou (obtido o resultado "${result}" com sucesso!)`
+    return {
+        msg: `✔ Teste ${n} funcionou (obtido o resultado "${result}" com sucesso!)`,
+        sucess: true
+    }
 }
 
 function testWithInterface(n1, n2, operation, expectedResult, n) {
@@ -37,7 +43,15 @@ const testCase10 = testCaseFactory(.3, 3, "/", .1, 10)
 
 
 function showTestResult(result) {
-    document.querySelector('p.test-result').textContent = result
+    const display = document.querySelector('p.test-result')
+    display.textContent = result.msg
+    if (result.sucess) {
+        display.classList.add('sucess')
+        display.classList.remove('fail')
+    } else {
+        display.classList.add('fail')
+        display.classList.remove('sucess')
+    }
 }
 
 function configTestsButtons() {
