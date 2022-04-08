@@ -39,7 +39,7 @@ function calculate(n1, n2, operation) {
         const precision = Math.max(1, getDecimalsCount(Math.min(n1, n2)))
         return precisionRound(fOperation(n1, n2), precision * 10)
     }
-    return ''
+    return 0
 }
 
 function getFormData() {
