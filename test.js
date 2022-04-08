@@ -17,83 +17,24 @@ function testWithInterface(n1, n2, operation, expectedResult, n) {
     return test(result, expectedResult, n)
 }
 
-
-function testCase1() {
-    let n1 = 4
-    let n2 = "a"
-    let operation = "/"
-
-    return testWithInterface(n1, n2, operation, "erro", 1)
+function testCaseFactory(n1, n2, operation, expectedResult, n) {
+    const fn = () => {
+        return testWithInterface(n1, n2, operation, expectedResult, n)
+    }
+    return fn
 }
 
-function testCase2() {
-    let n1 = 4
-    let n2 = 0
-    let operation = "/"
+const testCase1 = testCaseFactory(4, "a", "/", "erro", 1)
+const testCase2 = testCaseFactory(4, 0, "/", "erro", 2)
+const testCase3 = testCaseFactory(0, 2, "/", "erro", 3)
+const testCase4 = testCaseFactory(4, 8, "a", "erro", 4)
+const testCase5 = testCaseFactory(4, null, "-", 4, 5)
+const testCase6 = testCaseFactory(.1, .2, "+", .3, 6)
+const testCase7 = testCaseFactory(6, 4, "-", 2, 7)
+const testCase8 = testCaseFactory(5, 2, "/", 2.5, 8)
+const testCase9 = testCaseFactory(6, .2, "*", 1.2, 9)
+const testCase10 = testCaseFactory(.3, 3, "/", .1, 10)
 
-    return testWithInterface(n1, n2, operation, "erro", 2)
-}
-function testCase3() {
-    let n1 = 0
-    let n2 = 2
-    let operation = "/"
-
-    return testWithInterface(n1, n2, operation, "erro", 3)
-
-}
-
-function testCase4() {
-    let n1 = 4
-    let n2 = 8
-    let operation = "a"
-
-    return testWithInterface(n1, n2, operation, "erro", 4)
-
-}
-function testCase5() {
-    let n1 = 4
-    let n2 = null;
-    let operation = "-"
-
-    return testWithInterface(n1, n2, operation, 4, 5)
-
-}
-function testCase6() {
-    let n1 = .1
-    let n2 = .2
-    let operation = "+"
-
-    return testWithInterface(n1, n2, operation, .3, 6)
-}
-function testCase7() {
-    let n1 = 6
-    let n2 = 4
-    let operation = "-"
-
-    return testWithInterface(n1, n2, operation, 2, 7)
-}
-function testCase8() {
-    let n1 = 5
-    let n2 = 2
-    let operation = "/"
-
-    return testWithInterface(n1, n2, operation, 2.5, 8)
-}
-function testCase9() {
-    let n1 = 6
-    let n2 = .2
-    let operation = "*"
-
-    return testWithInterface(n1, n2, operation, 1.2, 9)
-}
-
-function testCase10() {
-    let n1 = .3
-    let n2 = 3
-    let operation = "/"
-
-    return testWithInterface(n1, n2, operation, .1, 10)
-}
 
 function showTestResult(result) {
     document.querySelector('p.test-result').textContent = result
