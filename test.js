@@ -1,104 +1,50 @@
-function test(result, expectedResult, n){
-    if(result !== expectedResult){
-        return `Teste ${n} falhou`
+function test(result, expectedResult, n) {
+    if (result !== expectedResult) {
+        return `❌ Teste ${n} falhou (resultado esperado: "${expectedResult}"; resultado obtido: "${result}")`
     }
-    return `Teste ${n} funcionou`
+    return `✔ Teste ${n} funcionou (obtido o resultado "${result}" com sucesso!)`
 }
 
+function testWithInterface(n1, n2, operation, expectedResult, n) {
+    document.querySelector('input#n1').value = n1
+    document.querySelector('input#n2').value = n2
+    document.querySelector('input#operation').value = operation
 
-function testCase1(){
-    let n1 = 4
-    let n2 = "a"
-    let operacao = "/"
+    const { n1: formN1, n2: formN2, operation: formOperation } = getFormData()
+    const result = calculate(formN1, formN2, formOperation)
+    document.querySelector('p.result').textContent = result
 
-    let result = calculate(n1, n2, operacao)
-    return test(result, "erro", 1)
+    return test(result, expectedResult, n)
 }
 
-function testCase2(){
-    let n1 = 4
-    let n2 = 0
-    let operacao = "/"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, "erro", 2)
-}
-function testCase3(){
-    let n1 = 0
-    let n2 = 2
-    let operacao = "/"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, "erro", 3)
+function testCaseFactory(n1, n2, operation, expectedResult, n) {
+    const fn = () => {
+        return testWithInterface(n1, n2, operation, expectedResult, n)
+    }
+    return fn
 }
 
-function testCase4(){
-    let n1 = 4
-    let n2 = 8
-    let operacao = "a"
+const testCase1 = testCaseFactory(4, 6, "+", 10, 1)
+const testCase2 = testCaseFactory(2.5, 4.5, "+", 7, 2)
+const testCase3 = testCaseFactory(0, 2, "/", 0, 3)
+const testCase4 = testCaseFactory(4, 8, "a", 0, 4)
+const testCase5 = testCaseFactory(4, null, "-", 4, 5)
+const testCase6 = testCaseFactory(.1, .2, "+", .3, 6)
+const testCase7 = testCaseFactory(6, 4, "-", 2, 7)
+const testCase8 = testCaseFactory(5, 2, "/", 2.5, 8)
+const testCase9 = testCaseFactory(6, .2, "*", 1.2, 9)
+const testCase10 = testCaseFactory(.3, 3, "/", .1, 10)
 
-    let result = calculate(n1, n2, operacao)
-    return test(result, "erro", 4)
-}
-function testCase5(){
-    let n1 = 4
-    let n2 = null;
-    let operacao = "-"
 
-    let result = calculate(n1, n2, operacao)
-    return test(result, 4, 5)
-}
-function testCase6(){
-    let n1 = .1
-    let n2 = .2
-    let operacao = "+"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, .3, 6)
-}
-function testCase7(){
-    let n1 = 6
-    let n2 = 4
-    let operacao = "-"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, 2, 7)
-}
-function testCase8(){
-    let n1 = 5
-    let n2 = 2
-    let operacao = "/"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, 2.5, 8)
-}
-function testCase9(){
-    let n1 = 6
-    let n2 = .2
-    let operacao = "*"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, 1.2, 9)
-}
-
-function testCase10(){
-    let n1 = .3
-    let n2 = 3
-    let operacao = "/"
-
-    let result = calculate(n1, n2, operacao)
-    return test(result, .1, 10)
-}
-
-function showTestResult(result){
+function showTestResult(result) {
     document.querySelector('p.test-result').textContent = result
 }
 
-function configTestsButtons(){
+function configTestsButtons() {
     const tests = [testCase1, testCase2, testCase3, testCase4, testCase5, testCase6, testCase7, testCase8, testCase9, testCase10]
-    for(let i = 0; i<10; i++){
-        document.querySelector(`button.run-test-${i+1}`).addEventListener('click', () => showTestResult(tests[i]()))
+    for (let i = 0; i < 10; i++) {
+        document.querySelector(`button.run-test-${i + 1}`).addEventListener('click', () => showTestResult(tests[i]()))
     }
 }
 
-document.querySelector('button.run-test-1').addEventListener('click', ()=> showTestResult(testCase1()))
+configTestsButtons()
